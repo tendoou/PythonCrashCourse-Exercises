@@ -65,10 +65,3 @@ new_admin.privileges.display()
 can_ban_users = new_admin.privileges.has_permission('can reactivate user')
 
 print('Admin can ban users? ' + str(can_ban_users))
-print("End")
-
-# added feature 1 part 1
-# added feature 1 part 2
-# added feature 1 part 3 y termine
-# trabajando en rama p1
-# trabajando en rama p2
