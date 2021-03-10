@@ -20,6 +20,7 @@ class Users:
     def reset_login_attempts(self):
         self.login_attempts = 0
 
+
 first_user = Users('diego', 'beltran', '29', 'méxico')
 
 first_user.describe_user()
