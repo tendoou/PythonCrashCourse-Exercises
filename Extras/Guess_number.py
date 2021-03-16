@@ -2,14 +2,14 @@ import random
 
 
 def guessing_number():
+    print('Think in a number from 10 to 100')
     print('Enter "q" to end the program')
-    number = input('Give me a number in between 10 and 100:')
     print(f'Enter y/n for yes or no ')
 
     number_trials = 0
 
     while number_trials < 10:
-        guess_number = random.choice(range(1, int(number), 1))
+        guess_number = random.choice(range(11, 101, 1))
 
         response = input(f'\nIs {guess_number} your number?:')
         if response == 'q':
@@ -22,6 +22,8 @@ def guessing_number():
             if number_trials < 9:
                 print('Ok, let me try again!')
 
-        print('Welp, fuck you')
+            elif number_trials == 10:
+                print('\nWelp, fuck you')
+
 
 guessing_number()
