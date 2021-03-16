@@ -16,7 +16,7 @@ def guessing_number():
             if response == 'q':
                 break
             if response == 'y':
-                print('We won!')
+                print('I won!')
                 break
             else:
                 if len(picked_numbers) < 10:
