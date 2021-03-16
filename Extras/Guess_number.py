@@ -9,7 +9,7 @@ def guessing_number():
     number_trials = 0
 
     while number_trials < 10:
-        guess_number = random.choice(range(11, 101, 1))
+        guess_number = random.choice(range(1, 101, 1))
 
         response = input(f'\nIs {guess_number} your number?:')
         if response == 'q':
