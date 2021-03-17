@@ -1,15 +1,18 @@
 import random
-
+import numpy
 picked_numbers = []
 
 
-def get_options(banned_numbers):
+def get_options(banned_numbers, a, b):
     options = []
 
-    for option in range(1, 11):
+    for option in range(a, b):
         if option not in banned_numbers:
             options.append(option)
     return options
+
+
+tried_numbers = []
 
 
 def smart_guess_number():
@@ -19,13 +22,30 @@ def smart_guess_number():
     a = int(a)
     b = input('Second number:')
     b = int(b)
-    if b % 2 == 0:
-        guessing = b/2
-    else:
-        guessing = b / 2 + 1
-    guessing = (b / 2) + 1
-    print(guessing)
-    print(f'Enter y/n for yes or no ')
+    trials = 0
+    while trials < 10:
+        options = get_options(tried_numbers, a, b)
+        guessing = (round(numpy.median(options)))
+        tried_numbers.append(guessing)
+
+        response = input(f'Is {guessing} your number?(type y/n):')
+        if response == 'y':
+            print('I won!')
+            break
+        if response == 'q':
+            break
+        else:
+            trials += 1
+            more_less = input(f'Mm, L<{guessing}<G?:(type l/g):')
+            if more_less == 'l':
+                b = guessing
+            else:
+                a = guessing
+
+            if trials < 9:
+                print("Ok, i'll try again")
+            elif trials == 10:
+                print('Ok, i lost')
 
 
 def guessing_number():
@@ -51,4 +71,4 @@ def guessing_number():
                 print('\nWelp, fuck you')
 
 
-guessing_number()
+smart_guess_number()
