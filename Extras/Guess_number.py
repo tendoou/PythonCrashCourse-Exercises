@@ -9,18 +9,22 @@ def get_options(banned_numbers):
     for option in range(1, 11):
         if option not in banned_numbers:
             options.append(option)
-        return options
+    return options
 
 
 def smart_guess_number():
     print('Enter "q" to end the program')
     print('Set a range of numbers')
     a = input('First number:')
-    a - int(a)
+    a = int(a)
     b = input('Second number:')
     b = int(b)
-    setting_numbers = range(a, b+1)
+    if b % 2 == 0:
+        guessing = b/2
+    else:
+        guessing = b / 2 + 1
     guessing = (b / 2) + 1
+    print(guessing)
     print(f'Enter y/n for yes or no ')
 
 
