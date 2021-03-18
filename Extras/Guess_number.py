@@ -20,11 +20,14 @@ def smart_guess_number():
     print('Set a range of numbers')
     a = input('First number:')
     a = int(a)
+    fixed_a = a
     b = input('Second number:')
     b = int(b)
+    fixed_b = b
+
     trials = 0
     while trials < 10:
-        options = get_options(tried_numbers, a, b)
+        options = get_options(tried_numbers, a, b + 1)
         guessing = (round(numpy.median(options)))
         tried_numbers.append(guessing)
 
@@ -37,10 +40,21 @@ def smart_guess_number():
         else:
             trials += 1
             more_less = input(f'Mm, L<{guessing}<G?:(type l/g):')
+
             if more_less == 'l':
-                b = guessing
+                if guessing == fixed_a:
+
+                    print('Cheater!')
+                    break
+                else:
+                    b = guessing
+
             else:
-                a = guessing
+                if guessing == fixed_b:
+                    print('Cheater!')
+                    break
+                else:
+                    a = guessing
 
             if trials < 9:
                 print("Ok, i'll try again")
