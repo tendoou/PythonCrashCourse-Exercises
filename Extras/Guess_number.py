@@ -31,7 +31,7 @@ def smart_guess_number():
         guessing = (round(numpy.median(options)))
         tried_numbers.append(guessing)
 
-        response = input(f'Is {guessing} your number?(type y/n):')
+        response = input(f'\nIs {guessing} your number?(type y/n):')
         if response == 'y':
             print('I won!')
             break
@@ -57,7 +57,7 @@ def smart_guess_number():
                     a = guessing
 
             if trials < 9:
-                print("Ok, i'll try again")
+                print("Ok, i'll try again\n")
             elif trials == 10:
                 print('Ok, i lost')
 
@@ -76,11 +76,11 @@ def guessing_number():
         if response == 'q':
             break
         if response == 'y':
-            print('I won!')
+            print('\nI won!')
             break
         else:
             if len(picked_numbers) < 10:
-                print('Ok, let me try again!')
+                print('Ok, let me try again!\n')
             elif len(picked_numbers) == 10:
                 print('\nWelp, fuck you')
 
