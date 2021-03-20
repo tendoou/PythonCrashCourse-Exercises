@@ -43,7 +43,6 @@ def smart_guess_number():
 
             if more_less == 'l':
                 if guessing == fixed_a:
-
                     print('Cheater!')
                     break
                 else:
