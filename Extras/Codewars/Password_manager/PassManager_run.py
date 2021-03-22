@@ -10,14 +10,24 @@ def action_menu(entry):
         print('4. End the program.')
         action = input('What do you want to do?:')
         if action == '1':
-            ws = input('ws')
-            us = input('us')
-            p = input('p')
-            entry.register_login_info(ws, us, p)
+            ws = input('Website:')
+            us = input('Username:')
+            p = input('Password:')
+            if entry.register_login_info(ws, us, p):
+                print('Your login info has been saved successfully.')
+            else:
+                print('The website does not exist')
         if action == '2':
-            credential = entry.consult_login_info()
+            consult = input('Which website do you want to consult?:')
+            credential = entry.consult_login_info(consult)
+            print(f'This is your info:{credential.__dict__}')
         if action == '3':
-            entry.delete_login_info()
+            delete = input('Type the website to delete:')
+            response = input(f'Are you sure you want to delete the {delete} register? (y/n):')
+            if response == 'y':
+                entry.delete_login_info(delete)
+                print(f'The entry has been deleted.')
+
         if action == '4':
             break
 

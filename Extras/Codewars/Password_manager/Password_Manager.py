@@ -18,27 +18,24 @@ class PasswordManager:
 
     def register_login_info(self, website, username, password):
         credentials = Credentials(website, username, password)
-        self.credentials.append(credentials)
-        self.create_file()
-        return credentials
+        if credentials.is_valid():
+            self.credentials.append(credentials)
+            self.create_file()
+            return credentials
+        else:
+            return False
 
-    def consult_login_info(self, consult):
+    def consult_login_info(self, consult_website):
         for credential in self.credentials:
-            if credential.website == consult.lower():
+            if credential.website == consult_website.lower():
                 return credential
 
-    def delete_login_info(self):
-        delete = input('Type the website to delete:')
-        response = input(f'Are you sure you want to delete the {delete} register? (y/n):')
-        if response == 'y':
-            for credential in self.credentials:
-                print(credential)
-                print(type(credential))
-                if credential.website == delete.lower():
-                    self.credentials.remove(credential)
-                    print(f'The entry has been deleted.')
-                    self.create_file()
-                    return True
+    def delete_login_info(self, delete_website):
+        for credential in self.credentials:
+            if credential.website == delete_website.lower():
+                self.credentials.remove(credential)
+                self.create_file()
+                return True
         return False
 
     def create_file(self):
@@ -46,8 +43,8 @@ class PasswordManager:
         with open(filename, 'w') as f:
             array = [cred.__dict__ for cred in self.credentials]
             json.dump(array, f)
-            print('Your login info has been saved successfully.')
+
             return True
-        return False
+
 
 
