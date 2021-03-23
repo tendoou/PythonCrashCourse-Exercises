@@ -8,8 +8,4 @@ class Credentials:
         self.password = password
 
     def is_valid(self):
-        request = requests.get(f'http://{self.website}')
-        if request.status_code == 200:
-            return True
-        else:
-            return False
+        pass

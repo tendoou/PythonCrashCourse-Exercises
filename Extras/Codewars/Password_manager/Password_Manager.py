@@ -1,4 +1,5 @@
 import json
+from PasswordGenerator import GeneratePassword
 from credentials import Credentials
 
 
@@ -18,17 +19,20 @@ class PasswordManager:
 
     def register_login_info(self, website, username, password):
         credentials = Credentials(website, username, password)
-        if credentials.is_valid():
-            self.credentials.append(credentials)
-            self.create_file()
-            return credentials
-        else:
-            return False
+        """If the user doesn't enter a password the function generates a safe one"""
+        if credentials.password == '':
+            new_password = GeneratePassword()
+            credentials.password = new_password.generate_password()
+        self.credentials.append(credentials)
+        self.create_file()
+        return credentials
 
     def consult_login_info(self, consult_website):
         for credential in self.credentials:
             if credential.website == consult_website.lower():
                 return credential
+            else:
+                return False
 
     def delete_login_info(self, delete_website):
         for credential in self.credentials:

@@ -11,14 +11,18 @@ def action_menu(entry):
         action = input('What do you want to do?:')
         if action == '1':
             ws = input('Website:')
-            us = input('Username:')
-            p = input('Password:')
-            if entry.register_login_info(ws, us, p):
-                print('Your login info has been saved successfully.')
+            credential = entry.consult_login_info(ws)
+            if entry.consult_login_info(ws):
+                print("You already have an entry for that website.")
+                print(f'This is your info:{credential.__dict__}')
             else:
-                print('The website does not exist')
+                us = input('Username:')
+                p = input('Password:')
+                entry.register_login_info(ws, us, p)
+                print('Your login info has been saved successfully.')
+
         if action == '2':
-            consult = input('Which website do you want to consult?:')
+            consult = input('Which website do you want to consult?  :')
             credential = entry.consult_login_info(consult)
             print(f'This is your info:{credential.__dict__}')
         if action == '3':
