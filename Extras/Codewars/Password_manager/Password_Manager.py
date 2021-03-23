@@ -1,5 +1,5 @@
 import json
-from PasswordGenerator import GeneratePassword
+from PasswordGenerator import PasswordGenerator
 from credentials import Credentials
 
 
@@ -21,7 +21,7 @@ class PasswordManager:
         credentials = Credentials(website, username, password)
         """If the user doesn't enter a password the function generates a safe one"""
         if credentials.password == '':
-            new_password = GeneratePassword()
+            new_password = PasswordGenerator()
             credentials.password = new_password.generate_password()
         self.credentials.append(credentials)
         self.create_file()
