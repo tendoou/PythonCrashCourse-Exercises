@@ -31,12 +31,18 @@ class Game:
                 card.is_flipped = not card.is_flipped
         return cards
 
-    def is_pair(self, pair_found):
-        for x in self.cards:
-            if x == pair_found:
-                self.cards[x] = ' '
-        pass
-
+    def is_pair(self, cards):
+        flipped_cards = []
+        for card in cards:
+            if card.is_flipped:
+                flipped_cards.append(card.visible_face)
+                if len(flipped_cards) == 2:
+                    piece1 = flipped_cards[0]
+                    piece2 = flipped_cards[1]
+                    if piece1 == piece2:
+                        print('you found a pair')
+                    else:
+                        flipped_cards = []
 
 
 
@@ -56,9 +62,6 @@ cards = game1.prepare_cards(all_back_faces, all_front_faces)
 print(game1.set_board(cards))
 game1.flip('A')
 game1.flip('B')
-game1.flip('C')
-game1.flip('D')
-game1.flip('E')
-game1.flip('F')
-game1.flip('G')
+print(game1.set_board(cards))
+game1.is_pair(cards)
 print(game1.set_board(cards))
