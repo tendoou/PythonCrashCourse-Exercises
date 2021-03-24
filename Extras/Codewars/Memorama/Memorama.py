@@ -3,7 +3,7 @@ import random
 # like back, front and the flip action.
 
 
-class Cards:
+class Card:
     def __init__(self, back_face, front_face):
         self.back_face = back_face
         self.visible_face = back_face
@@ -17,12 +17,6 @@ class Cards:
             self.visible_face = self.front_face
         self.is_flipped = not self.is_flipped
 
-    def prepare_cards(self):
-        cards = []
-        for i in range(len(self.back_face)):
-            cards.append(self.back_face[i])
-            cards.append(self.front_face[i])
-        return cards
 
 
 emoji = [
