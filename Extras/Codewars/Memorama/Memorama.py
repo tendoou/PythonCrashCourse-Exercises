@@ -10,12 +10,7 @@ class Card:
         self.front_face = front_face
         self.is_flipped = False
 
-    def flip(self):
-        if self.is_flipped:
-            self.visible_face = self.back_face
-        else:
-            self.visible_face = self.front_face
-        self.is_flipped = not self.is_flipped
+
 
 
 
