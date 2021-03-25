@@ -42,7 +42,10 @@ class Game:
                     if piece1 == piece2:
                         print('you found a pair')
                     else:
-                        flipped_cards = []
+                        for x in cards:
+                            x.visible_face = x.back_face
+
+
 
 
 
