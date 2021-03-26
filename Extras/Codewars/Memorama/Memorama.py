@@ -18,6 +18,12 @@ class Card:
             self.visible_face = self.front_face
         self.is_flipped = not self.is_flipped
 
+    def __eq__(self, other):
+        return self.front_face == other.front_face and self.back_face == other.back_face
+
+    def __str__(self):
+        return self.front_face
+
     def matches(self, card):
         return self.front_face == card.front_face
 
