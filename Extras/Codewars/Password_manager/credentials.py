@@ -1,6 +1,3 @@
-import requests
-
-
 class Credentials:
     def __init__(self, website, username, password):
         self.website = website

@@ -1,14 +1,16 @@
 import json
 from PasswordGenerator import PasswordGenerator
 from credentials import Credentials
+import os
 
 
 # che
 class PasswordManager:
     def __init__(self):
-        filename = 'password_manager.json'
+        filename = f'{os.path.dirname(os.path.realpath(__file__))}\password_manager.json'
         try:
             with open(filename) as f:
+                print(' ??')
                 entries = json.load(f)
                 self.credentials = []
                 for entry in entries:
@@ -31,8 +33,7 @@ class PasswordManager:
         for credential in self.credentials:
             if credential.website == consult_website.lower():
                 return credential
-            else:
-                return False
+        return False
 
     def delete_login_info(self, delete_website):
         for credential in self.credentials:
@@ -43,7 +44,7 @@ class PasswordManager:
         return False
 
     def create_file(self):
-        filename = 'password_manager.json'
+        filename = f'{os.path.dirname(os.path.realpath(__file__))}\password_manager.json'
         with open(filename, 'w') as f:
             array = [cred.__dict__ for cred in self.credentials]
             json.dump(array, f)

@@ -15,5 +15,5 @@ class PasswordGenerator:
         return new_password
 
 
-password1 = PasswordGenerator()
-print(password1.generate_password())
+#password1 = PasswordGenerator()
+#print(password1.generate_password())
